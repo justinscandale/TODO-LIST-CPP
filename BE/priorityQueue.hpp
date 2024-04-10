@@ -1,25 +1,24 @@
 #ifndef PRIORITY_H
 #define PRIORITY_H
 #include <string>
+#include <vector>
+#include "event.hpp"
+#include "priorityQueue.hpp"
 
-class TODO_EVENT{
+class PriorityQueue{
 
     public:
-        priorityQueue(int prioirty, std::string info)
-        {
-            this->priority = prioirty;
-            this->info = info;
-        }
+        PriorityQueue(){};  //constructor
 
-        std::string getInfo();
-        int getPriority();
-
-        //addEvent(int priority, std::string info);
+        std::vector<std::map<std::string,std::string>> viewEvents();  //put each event into map of <string, string> and insert this into a vector
+        void addEvent(std::string name, int uniqueID, std::string info = "", int priorityLevel = 3, int priorityDate = 99999999);  //add event to priority queue
+        void removeEvent(int uniqueID);  //remove event from priority queue based on uniqueID
+        void sortByPriorityThenDate();  //sort priority queue based on priority level attribute then priority date attribute
 
     private:
-        int priority;
-        std::string info;
-
+        int uniqueID = 0;  //unique id assigned to each todo event
+        EVENT *root = nullptr;  //holds root of priority queue
+        int size = 0;  //size of priority queue
 
 };
 

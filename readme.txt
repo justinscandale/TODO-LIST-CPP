@@ -10,5 +10,5 @@ DATA STRUCTURES USED:
 
 COMPILE INSTRUCTIONS:
 
-    C++ Standard 11
-    g++ -o test.out main.cpp -std=c++11 
+    C++ Standard 17
+    g++ -o test.out main.cpp -std=c++11 -std=c++17 -Wall

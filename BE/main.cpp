@@ -1,10 +1,11 @@
 #include "event.cpp"
-#include "priorityQueue.cppp"
+#include "priorityQueue.cpp"
 
+//main used for testing 
 int main()
 {
-    TODO_EVENT myEvent = TODO_EVENT(100,"FUCK");
-    std::cout<< myEvent.getInfo();
+    EVENT myEvent = EVENT("MY EVENT",100);
+    std::cout<< myEvent.getName();
 
     return 0;
 }
