@@ -6,6 +6,11 @@ std::string EVENT::getName()  //return name attribute
     return name;
 };
 
+int EVENT::getUniqueID() //return uniqueID
+{
+    return uniqueID;
+};
+
 std::string EVENT::getInfo()  //return info attribute
 {
     return info;

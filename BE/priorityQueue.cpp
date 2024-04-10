@@ -7,9 +7,9 @@ std::vector<std::map<std::string,std::string>> PriorityQueue::viewEvents()
 };  
 
 //add event to priority queue
-void PriorityQueue::addEvent(std::string name, int uniqueID, std::string info, int priorityLevel, int priorityDate)
+void PriorityQueue::addEvent(std::string name, std::string info, int priorityLevel, int priorityDate)
 {
-    EVENT *newEvent = new EVENT(name,uniqueID,info,priorityLevel,priorityDate);
+    EVENT *newEvent = new EVENT(name,uniqueID++,info,priorityLevel,priorityDate);
 
     //insert at beginning if empty
     if(isEmpty())
@@ -74,7 +74,9 @@ void PriorityQueue::printPriorityQueue()
 {
     for(EVENT *cur = root; cur!=nullptr; cur=cur->next)
     {   
-        std::cout<<cur->getName()<<"  "<<cur->getInfo()<<"  "<<std::to_string(cur->getPriorityDate())<<std::endl;
+        std::cout<<cur->getName()<<"  "<<cur->getInfo()<<"  "
+        <<std::to_string(cur->getPriorityDate())<<"  "
+        <<std::to_string(cur->getUniqueID()) <<std::endl;
     }
     return;
 };

@@ -11,7 +11,7 @@ class PriorityQueue{
         PriorityQueue(){};  //constructor
 
         std::vector<std::map<std::string,std::string>> viewEvents();  //put each event into map of <string, string> and insert this into a vector
-        void addEvent(std::string name, int uniqueID, std::string info = "", int priorityLevel = 3, int priorityDate = 99999999);  //add event to priority queue
+        void addEvent(std::string name, std::string info = "", int priorityLevel = 3, int priorityDate = 99999999);  //add event to priority queue
         void removeEvent(int uniqueID);  //remove event from priority queue based on uniqueID
         void sortByPriorityThenDate();  //sort priority queue based on priority level attribute then priority date attribute
 

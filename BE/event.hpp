@@ -19,6 +19,7 @@ class EVENT{
 
         EVENT *next;  //pointer to next todo event (used in priority queue)
 
+        int getUniqueID();  //return uniqueID
         std::string getName();  //return name attribute
         std::string getInfo();  //return info attribute
         int getPriorityLevel();  //return priorityLevel attribute
