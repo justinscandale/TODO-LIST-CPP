@@ -15,6 +15,11 @@ class PriorityQueue{
         void removeEvent(int uniqueID);  //remove event from priority queue based on uniqueID
         void sortByPriorityThenDate();  //sort priority queue based on priority level attribute then priority date attribute
 
+        //possible helper functions?
+        bool isEmpty();  //return true if priority queue is empty
+        void insertEventByDateThenPriority(EVENT *ptr);  //insert EVENT in prioirty queue in order of date then prioirty 
+        void printPriorityQueue();  //print priority queue
+    
     private:
         int uniqueID = 0;  //unique id assigned to each todo event
         EVENT *root = nullptr;  //holds root of priority queue
