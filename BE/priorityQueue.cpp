@@ -3,7 +3,14 @@
 //put each event into map of <string, string> and insert this into a vector
 std::vector<std::map<std::string,std::string>> PriorityQueue::viewEvents()  
 {
-    return std::vector<std::map<std::string,std::string>>();
+    std::vector<std::map<std::string,std::string>> temp;
+    
+    for(EVENT* cur = root; cur!= nullptr; cur=cur->next)
+    {
+        temp.push_back(cur->eventToDictionary());
+    }
+
+    return temp;
 };  
 
 //add event to priority queue

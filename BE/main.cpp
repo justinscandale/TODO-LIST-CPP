@@ -24,5 +24,19 @@ int main()
     pq.removeEvent(2);
     pq.printPriorityQueue();
 
+    //print out vector of maps
+    std::vector<std::map<std::string,std::string>> temp = pq.viewEvents();
+    std::cout<<"\n\n";
+    for(size_t i = 0; i<temp.size(); i++)
+    {
+        std::cout<< i << "th Event in PRIORIRTY QUEUE\n";
+        for(auto& t: temp[i])
+        {
+            std::cout<< t.first << " "
+                <<t.second << "\n";
+        }
+        std::cout<<"\n\n";
+    }
+
     return 0;
 }
