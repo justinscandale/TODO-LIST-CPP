@@ -19,7 +19,7 @@ void PriorityQueue::addEvent(std::string name, std::string info, int priorityLev
     //insert in sorted order if not empty
     else
     {
-        insertEventByDateThenPriority(newEvent);
+        insertEventByDate(newEvent);
     }
 
     size++;
@@ -27,16 +27,44 @@ void PriorityQueue::addEvent(std::string name, std::string info, int priorityLev
     return;
 };  
 
- //remove event from priority queue based on uniqueID
+//remove event from priority queue based on uniqueID
 void PriorityQueue::removeEvent(int uniqueID)
 {
+    if(isEmpty()) {return;};
+
+    //search for event
+    EVENT* prev = nullptr;
+    EVENT* cur = root;
+
+    while(cur != nullptr && cur->getUniqueID() != uniqueID)
+    {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    //remove EVENT from beginning of priority queue
+    if(prev==nullptr)
+    {
+        root = root->next;
+    }
+    //remove EVENT from anywhere else in priority queue
+    else if(cur!=nullptr)
+    {
+        prev->next = cur->next;
+        delete(cur);
+    }
+    //EVENT not found
+    else
+    {
+        return;
+    }
 
 }; 
 
 //sort priority queue based on priority level attribute then priority date attribute
-void PriorityQueue::sortByPriorityThenDate()
+void PriorityQueue::sortByPriority()
 {
-
+    return;
 }; 
 
 //return true if priority queue is empty
@@ -46,7 +74,7 @@ bool PriorityQueue::isEmpty()
 };
 
 //insert EVENT in prioirty queue in order of date then prioirty 
-void PriorityQueue::insertEventByDateThenPriority(EVENT *ptr)
+void PriorityQueue::insertEventByDate(EVENT *ptr)
 {   
     EVENT *cur = root;
     EVENT *prev = nullptr;

@@ -21,6 +21,7 @@ int main()
     pq.addEvent("EXAMPLE2","deets2",1,20010101);
     pq.addEvent("EXAMPLE3","deets3",1,20010101);
     pq.addEvent("EXAMPLE4","deets4",1,20000102);
+    pq.removeEvent(2);
     pq.printPriorityQueue();
 
     return 0;
