@@ -25,7 +25,7 @@ void clearInputBuffer()
 
 int main()
 {
-    TodoList pq = TodoList();
+    TodoList todoList = TodoList();
     int choice;
     std::string eventName, eventDetails, eventDateFromUser, monthStr, dayStr, yearStr;
     int eventDate, eventUniqueID, month, day, year;
@@ -80,16 +80,21 @@ int main()
             // Combine the date components into a single integer
             eventDate = year * 10000 + month * 100 + day;
 
-            pq.addEvent(eventName, eventDetails, eventDate);
+            todoList.addEvent(eventName, eventDetails, eventDate);
             std::cout << "\nEvent added successfully.\n";
 
             break;
         case 2:
+            if(todoList.isEmpty())
+            {     
+                std::cout<<"============= TODO-LIST IS EMPTY =============\n";
+                break;
+            }
             std::cout << "======= MARK EVENT COMPLETE/INCOMPLETE =======\n";
             std::cout << "Enter unique ID of event to mark: ";
             std::cin >> eventUniqueID;
             clearInputBuffer();
-            pq.toggleEventCompletion(eventUniqueID);
+            todoList.toggleEventCompletion(eventUniqueID);
             std::cout << "\nEvent completion toggled successfully.\n";
             break;
         case 3:
@@ -97,12 +102,12 @@ int main()
             std::cout << "Enter unique ID of event to remove: ";
             std::cin >> eventUniqueID;
             clearInputBuffer();
-            pq.removeEvent(eventUniqueID);
+            todoList.removeEvent(eventUniqueID);
             std::cout << "\nEvent removed successfully.\n";
             break;
         case 4:
             std::cout << "======= VIEW EVENTS =======\n";
-            temp = pq.viewEvents();
+            temp = todoList.viewEvents();
             if (temp.empty())
             {
                 std::cout << "No events on the list.\n";
