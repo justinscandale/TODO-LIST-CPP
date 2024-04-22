@@ -141,3 +141,76 @@ void TodoList::printTodoList()
     }
     return;
 };
+EVENT* TodoList::mergeSortHelper(EVENT* start, std::string attribute)
+{
+    // Base case: If the list has only one element or is empty, return it
+    if (start == nullptr || start->next == nullptr)
+        return start;
+
+    // Find the middle of the list
+    EVENT* slow = start;
+    EVENT* fast = start->next;
+
+    while (fast != nullptr && fast->next != nullptr)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    // Split the list into two halves
+    EVENT* mid = slow->next;
+    slow->next = nullptr;
+
+    // Recursively sort the two halves
+    EVENT* left = mergeSortHelper(start, attribute);
+    EVENT* right = mergeSortHelper(mid, attribute);
+
+    // Merge the sorted halves
+    return merge(left, right, attribute);
+};
+
+EVENT* TodoList::merge(EVENT* left, EVENT* right, std::string attribute)
+{
+    EVENT dummy("Dummy", 0); // Dummy node for merging
+    EVENT* tail = &dummy;
+
+    while (left != nullptr && right != nullptr)
+    {
+        // Compare events based on the specified attribute
+        if (attribute == "priorityDate")
+        {
+            if (left->getPriorityDate() <= right->getPriorityDate())
+            {
+                tail->next = left;
+                left = left->next;
+            }
+            else
+            {
+                tail->next = right;
+                right = right->next;
+            }
+        }
+        else
+        {
+            // Handle other attributes if needed
+        }
+
+        tail = tail->next;
+    }
+
+    // Attach the remaining nodes of left and right halves, if any
+    if (left != nullptr)
+        tail->next = left;
+    else
+        tail->next = right;
+
+    return dummy.next;
+};
+
+void TodoList::mergeSort(std::string attribute)
+    {
+        if (isEmpty() || size == 1)
+            return; // No need to sort if empty or only one event
+
+        root = mergeSortHelper(root, attribute);
+    };

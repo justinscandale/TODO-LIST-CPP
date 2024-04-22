@@ -107,6 +107,8 @@ int main()
             break;
         case 4:
             std::cout << "======= VIEW EVENTS =======\n";
+            todoList.mergeSort("priorityDate");
+            std::cout<<"SORTED";
             temp = todoList.viewEvents();
             if (temp.empty())
             {
