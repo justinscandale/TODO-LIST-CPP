@@ -1,7 +1,7 @@
 #include "event.cpp"
 #include <iostream>
 #include <string>
-#include "priorityQueue.cpp"
+#include "TodoList.cpp"
 
 // Function to display menu
 void displayMenu()
@@ -24,7 +24,7 @@ void clearInputBuffer()
 
 int main()
 {
-    PriorityQueue pq = PriorityQueue();
+    TodoList pq = TodoList();
     int choice;
     std::string eventName, eventDetails, eventDateFromUser, monthStr, dayStr, yearStr;
     int eventDate, eventUniqueID, month, day, year;

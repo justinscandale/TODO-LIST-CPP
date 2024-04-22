@@ -92,7 +92,7 @@ std::map<std::string, std::string> EVENT::eventToDictionary() // put event in di
     temp["Name"] = name;
     temp["ID"] = std::to_string(uniqueID);
     temp["Description"] = info;
-    temp["Date"] = std::to_string(priorityDate);
+    temp["Date"] = date_to_string();
     temp["Status"] = complete ? "Complete" : "Incomplete";
 
     return temp;

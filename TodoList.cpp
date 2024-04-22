@@ -1,7 +1,7 @@
-#include "priorityQueue.hpp"
+#include "TodoList.hpp"
 
 // put each event into map of <string, string> and insert this into a vector
-std::vector<std::map<std::string, std::string>> PriorityQueue::viewEvents()
+std::vector<std::map<std::string, std::string>> TodoList::viewEvents()
 {
     std::vector<std::map<std::string, std::string>> temp;
 
@@ -14,9 +14,9 @@ std::vector<std::map<std::string, std::string>> PriorityQueue::viewEvents()
 };
 
 // add event to priority queue
-void PriorityQueue::addEvent(std::string name, std::string info, int priorityLevel, int priorityDate)
+void TodoList::addEvent(std::string name, std::string info, int priorityDate)
 {
-    EVENT *newEvent = new EVENT(name, uniqueID++, info, priorityLevel, priorityDate);
+    EVENT *newEvent = new EVENT(name, uniqueID++, info, priorityDate);
 
     // insert at beginning if empty
     if (isEmpty())
@@ -35,7 +35,7 @@ void PriorityQueue::addEvent(std::string name, std::string info, int priorityLev
 };
 
 // remove event from priority queue based on uniqueID
-void PriorityQueue::removeEvent(int uniqueID)
+void TodoList::removeEvent(int uniqueID)
 {
     if (isEmpty())
     {
@@ -71,19 +71,19 @@ void PriorityQueue::removeEvent(int uniqueID)
 };
 
 // sort priority queue based on priority level attribute then priority date attribute
-void PriorityQueue::sortByPriority()
+void TodoList::sortByPriority()
 {
     return;
 };
 
 // return true if priority queue is empty
-bool PriorityQueue::isEmpty()
+bool TodoList::isEmpty()
 {
     return size == 0 ? true : false;
 };
 
 // insert EVENT in priority queue in order of date then prioirty
-void PriorityQueue::insertEventByDate(EVENT *ptr)
+void TodoList::insertEventByDate(EVENT *ptr)
 {
     EVENT *cur = root;
     EVENT *prev = nullptr;
@@ -107,7 +107,7 @@ void PriorityQueue::insertEventByDate(EVENT *ptr)
 };
 
 // print priority queue
-void PriorityQueue::printPriorityQueue()
+void TodoList::printTodoList()
 {
     for (EVENT *cur = root; cur != nullptr; cur = cur->next)
     {
