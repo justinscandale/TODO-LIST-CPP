@@ -14,9 +14,9 @@ std::vector<std::map<std::string, std::string>> PriorityQueue::viewEvents()
 };
 
 // add event to priority queue
-void PriorityQueue::addEvent(std::string name, std::string info, int priorityLevel, int priorityDate)
+void PriorityQueue::addEvent(std::string name, std::string info, int priorityDate)
 {
-    EVENT *newEvent = new EVENT(name, uniqueID++, info, priorityLevel, priorityDate);
+    EVENT *newEvent = new EVENT(name, uniqueID++, info, priorityDate);
 
     // insert at beginning if empty
     if (isEmpty())
