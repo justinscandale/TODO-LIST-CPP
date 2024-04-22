@@ -49,9 +49,15 @@ int main()
             std::cout << "Enter event details: ";
             std::getline(std::cin, eventDetails);
 
-            //get priority level
             std::cout << "Enter event Priority Level (1-5): ";
             std::cin >> eventPriorityLevel;
+            clearInputBuffer();
+            // Validate the priority level
+            if (eventPriorityLevel < 1 || eventPriorityLevel > 5)
+            {
+                std::cout << "Invalid priority level. Please enter a value between 1 and 5.\n";
+                continue;
+            }
 
             std::cout << "Enter event date (MM/DD/YYYY): ";
             std::cin >> eventDateFromUser;
@@ -89,9 +95,9 @@ int main()
 
             break;
         case 2:
-            if(todoList.isEmpty())
-            {     
-                std::cout<<"============= TODO-LIST IS EMPTY =============\n";
+            if (todoList.isEmpty())
+            {
+                std::cout << "============= TODO-LIST IS EMPTY =============\n";
                 break;
             }
             std::cout << "======= MARK EVENT COMPLETE/INCOMPLETE =======\n";
@@ -112,7 +118,7 @@ int main()
         case 4:
             std::cout << "======= VIEW EVENTS =======\n";
             todoList.mergeSort("priorityDate");
-            std::cout<<"SORTED";
+            std::cout << "SORTED";
             temp = todoList.viewEvents();
             if (temp.empty())
             {
