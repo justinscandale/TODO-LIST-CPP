@@ -7,12 +7,13 @@ class EVENT
 {
 
 public:
-    EVENT(std::string name, int uniqueID, std::string info = "", int priorityDate = 99999999) // constructor with default values
+    EVENT(std::string name, int uniqueID, std::string info = "", int priorityDate = 99999999, int priorityLevel=0) // constructor with default values
     {
         this->name = name;
         this->uniqueID = uniqueID;
         this->info = info;
         this->priorityDate = priorityDate;
+        this->priorityLevel = priorityLevel;
         this->complete = false;
         this->next = nullptr;
     };
@@ -26,6 +27,7 @@ public:
     int getPriorityDate();                                  // return priorityDate attribute
     void toggleComplete();                                  // toggle complete attribute
     bool getComplete();                                     // return complete attribute
+    int getPriorityLevel();
     std::map<std::string, std::string> eventToDictionary(); // put event in dictionary to be used in api call
 
 private:
