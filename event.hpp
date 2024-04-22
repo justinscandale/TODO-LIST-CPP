@@ -11,7 +11,6 @@ class EVENT{
             this->name = name;
             this->uniqueID = uniqueID;
             this->info = info;
-            this->priorityLevel = priorityLevel;
             this->priorityDate = priorityDate;
             this->complete = false;
             this->next = nullptr;
@@ -19,10 +18,10 @@ class EVENT{
 
         EVENT *next;  //pointer to next todo event (used in priority queue)
 
+        std::string date_to_string(); //returns string of proper date
         int getUniqueID();  //return uniqueID
         std::string getName();  //return name attribute
         std::string getInfo();  //return info attribute
-        int getPriorityLevel();  //return priorityLevel attribute
         int getPriorityDate();  //return priorityDate attribute
         void toggleComplete();  //toggle complete attribute
         bool getComplete();  //return complete attribute
@@ -32,7 +31,6 @@ class EVENT{
         int uniqueID;  //unique id for event
         std::string name;  //name of todo event
         std::string info;  //description of todo event
-        int priorityLevel; //in format (0-High, 1-Medium, 2-Low, 3-None)
         int priorityDate; //in format (YYYYMMDD)
         bool complete;  //true when todo task is completed
 };
