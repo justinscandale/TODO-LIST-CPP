@@ -10,9 +10,10 @@ void displayMenu()
     std::cout << "Please choose an option:\n";
     std::cout << "1. Add Event\n";
     std::cout << "2. Mark Event Complete/Incomplete\n";
-    std::cout << "3. Remove Event\n";
-    std::cout << "4. View Events\n";
-    std::cout << "5. Exit\n";
+    std::cout << "3. Sort TodoList\n";
+    std::cout << "4. Remove Event\n";
+    std::cout << "5. View Events\n";
+    std::cout << "6. Exit\n";
     std::cout << "=======================================================\n";
     std::cout << "Enter your choice: ";
 }
