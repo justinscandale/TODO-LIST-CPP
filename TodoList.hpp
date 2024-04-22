@@ -1,14 +1,14 @@
-#ifndef PRIORITY_H
-#define PRIORITY_H
+#ifndef TODOLIST_H
+#define TODOLIST_H
 #include <string>
 #include <vector>
 #include "event.hpp"
-#include "priorityQueue.hpp"
+#include "TodoList.hpp"
 
-class PriorityQueue{
+class TodoList{
 
     public:
-        PriorityQueue(){};  //constructor
+        TodoList(){};  //constructor
 
         std::vector<std::map<std::string,std::string>> viewEvents();  //put each event into map of <string, string> and insert this into a vector
         void addEvent(std::string name, std::string info = "", int priorityLevel = 3, int priorityDate = 99999999);  //add event to priority queue
