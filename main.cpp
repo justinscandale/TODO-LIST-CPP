@@ -9,9 +9,10 @@ void displayMenu()
     std::cout << "\n====================== TODO LIST ======================\n";
     std::cout << "Please choose an option:\n";
     std::cout << "1. Add Event\n";
-    std::cout << "2. Remove Event\n";
-    std::cout << "3. View Events\n";
-    std::cout << "4. Exit\n";
+    std::cout << "2. Mark Event Complete/Incomplete\n";
+    std::cout << "3. Remove Event\n";
+    std::cout << "4. View Events\n";
+    std::cout << "5. Exit\n";
     std::cout << "=======================================================\n";
     std::cout << "Enter your choice: ";
 }
@@ -84,13 +85,22 @@ int main()
 
             break;
         case 2:
+            std::cout << "======= MARK EVENT COMPLETE/INCOMPLETE =======\n";
+            std::cout << "Enter unique ID of event to mark: ";
+            std::cin >> eventUniqueID;
+            clearInputBuffer();
+            pq.toggleEventCompletion(eventUniqueID);
+            std::cout << "\nEvent completion toggled successfully.\n";
+            break;
+        case 3:
             std::cout << "======= REMOVE EVENT =======\n";
             std::cout << "Enter unique ID of event to remove: ";
             std::cin >> eventUniqueID;
             clearInputBuffer();
             pq.removeEvent(eventUniqueID);
+            std::cout << "\nEvent removed successfully.\n";
             break;
-        case 3:
+        case 4:
             std::cout << "======= VIEW EVENTS =======\n";
             temp = pq.viewEvents();
             if (temp.empty())
@@ -108,7 +118,7 @@ int main()
                 std::cout << "\n";
             }
             break;
-        case 4:
+        case 5:
             std::cout << "Exiting...\n";
             return 0;
         default:

@@ -70,10 +70,34 @@ void TodoList::removeEvent(int uniqueID)
     }
 };
 
-// sort priority queue based on priority level attribute then priority date attribute
-void TodoList::sortByPriority()
+// mark event complete/incomplete from priority queue based on uniqueID
+void TodoList::toggleEventCompletion(int uniqueID)
 {
-    return;
+    if (isEmpty())
+    {
+        return;
+    };
+
+    // search for event
+    EVENT *prev = nullptr;
+    EVENT *cur = root;
+
+    while (cur != nullptr && cur->getUniqueID() != uniqueID)
+    {
+        prev = cur;
+        cur = cur->next;
+    }
+
+    // remove EVENT from anywhere else in priority queue
+    if (cur != nullptr)
+    {
+        cur->toggleComplete();
+    }
+    // EVENT not found
+    else
+    {
+        return;
+    }
 };
 
 // return true if priority queue is empty
