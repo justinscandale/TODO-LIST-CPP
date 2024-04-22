@@ -192,7 +192,17 @@ EVENT* TodoList::merge(EVENT* left, EVENT* right, std::string attribute)
         }
         else
         {
-            // Handle other attributes if needed
+            // Handle other attribute
+            if (left->getPriorityLevel() <= right->getPriorityLevel())
+            {
+                tail->next = left;
+                left = left->next;
+            }
+            else
+            {
+                tail->next = right;
+                right = right->next;
+            }
         }
 
         tail = tail->next;
