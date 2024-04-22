@@ -28,7 +28,7 @@ int main()
     TodoList todoList = TodoList();
     int choice;
     std::string eventName, eventDetails, eventDateFromUser, monthStr, dayStr, yearStr;
-    int eventDate, eventUniqueID, month, day, year;
+    int eventDate, eventUniqueID, month, day, year, eventPriorityLevel;
     std::vector<std::map<std::string, std::string>> temp;
 
     while (true)
@@ -48,6 +48,10 @@ int main()
 
             std::cout << "Enter event details: ";
             std::getline(std::cin, eventDetails);
+
+            //get priority level
+            std::cout << "Enter event Priority Level (1-5): ";
+            std::cin >> eventPriorityLevel;
 
             std::cout << "Enter event date (MM/DD/YYYY): ";
             std::cin >> eventDateFromUser;
@@ -80,7 +84,7 @@ int main()
             // Combine the date components into a single integer
             eventDate = year * 10000 + month * 100 + day;
 
-            todoList.addEvent(eventName, eventDetails, eventDate);
+            todoList.addEvent(eventName, eventDetails, eventDate, eventPriorityLevel);
             std::cout << "\nEvent added successfully.\n";
 
             break;

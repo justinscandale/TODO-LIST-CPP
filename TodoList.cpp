@@ -14,9 +14,9 @@ std::vector<std::map<std::string, std::string>> TodoList::viewEvents()
 };
 
 // add event to priority queue
-void TodoList::addEvent(std::string name, std::string info, int priorityDate)
+void TodoList::addEvent(std::string name, std::string info, int priorityDate, int priorityLevel)
 {
-    EVENT *newEvent = new EVENT(name, uniqueID++, info, priorityDate);
+    EVENT *newEvent = new EVENT(name, uniqueID++, info, priorityDate, priorityLevel);
 
     // insert at beginning if empty
     if (isEmpty())
