@@ -28,7 +28,7 @@ int main()
     TodoList todoList = TodoList();
     int choice;
     std::string eventName, eventDetails, eventDateFromUser, monthStr, dayStr, yearStr;
-    int eventDate, eventUniqueID, month, day, year, eventPriorityLevel;
+    int eventDate, eventUniqueID, month, day, year, eventPriorityLevel, sortingCriteria;
     std::vector<std::map<std::string, std::string>> temp;
 
     while (true)
@@ -108,6 +108,14 @@ int main()
             std::cout << "\nEvent completion toggled successfully.\n";
             break;
         case 3:
+            std::cout << "======= SORT EVENT =======\n";
+            std::cout << "How do you want to sort it? (1-Date, 2-Priority Level): ";
+            std::cin >> sortingCriteria;
+            clearInputBuffer();
+            todoList.mergeSort(sortingCriteria == 1 ? "date" : "priority");
+            std::cout << "\nTodo List sorted!\n";
+            break;
+        case 4:
             std::cout << "======= REMOVE EVENT =======\n";
             std::cout << "Enter unique ID of event to remove: ";
             std::cin >> eventUniqueID;
@@ -115,7 +123,7 @@ int main()
             todoList.removeEvent(eventUniqueID);
             std::cout << "\nEvent removed successfully.\n";
             break;
-        case 4:
+        case 5:
             std::cout << "======= VIEW EVENTS =======\n";
             temp = todoList.viewEvents();
             if (temp.empty())
@@ -134,10 +142,6 @@ int main()
             }
             break;
         case 6:
-            todoList.mergeSort("pD");
-            std::cout << "SORTED";
-            break;
-        case 5:
             std::cout << "Exiting...\n";
             return 0;
         default:

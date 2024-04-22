@@ -141,15 +141,15 @@ void TodoList::printTodoList()
     }
     return;
 };
-EVENT* TodoList::mergeSortHelper(EVENT* start, std::string attribute)
+EVENT *TodoList::mergeSortHelper(EVENT *start, std::string attribute)
 {
     // Base case: If the list has only one element or is empty, return it
     if (start == nullptr || start->next == nullptr)
         return start;
 
     // Find the middle of the list
-    EVENT* slow = start;
-    EVENT* fast = start->next;
+    EVENT *slow = start;
+    EVENT *fast = start->next;
 
     while (fast != nullptr && fast->next != nullptr)
     {
@@ -158,26 +158,26 @@ EVENT* TodoList::mergeSortHelper(EVENT* start, std::string attribute)
     }
 
     // Split the list into two halves
-    EVENT* mid = slow->next;
+    EVENT *mid = slow->next;
     slow->next = nullptr;
 
     // Recursively sort the two halves
-    EVENT* left = mergeSortHelper(start, attribute);
-    EVENT* right = mergeSortHelper(mid, attribute);
+    EVENT *left = mergeSortHelper(start, attribute);
+    EVENT *right = mergeSortHelper(mid, attribute);
 
     // Merge the sorted halves
     return merge(left, right, attribute);
 };
 
-EVENT* TodoList::merge(EVENT* left, EVENT* right, std::string attribute)
+EVENT *TodoList::merge(EVENT *left, EVENT *right, std::string attribute)
 {
     EVENT dummy("Dummy", 0); // Dummy node for merging
-    EVENT* tail = &dummy;
+    EVENT *tail = &dummy;
 
     while (left != nullptr && right != nullptr)
     {
         // Compare events based on the specified attribute
-        if (attribute == "priorityDate")
+        if (attribute == "date")
         {
             if (left->getPriorityDate() <= right->getPriorityDate())
             {
@@ -218,9 +218,9 @@ EVENT* TodoList::merge(EVENT* left, EVENT* right, std::string attribute)
 };
 
 void TodoList::mergeSort(std::string attribute)
-    {
-        if (isEmpty() || size == 1)
-            return; // No need to sort if empty or only one event
+{
+    if (isEmpty() || size == 1)
+        return; // No need to sort if empty or only one event
 
-        root = mergeSortHelper(root, attribute);
-    };
+    root = mergeSortHelper(root, attribute);
+};
