@@ -24,11 +24,22 @@ void clearInputBuffer()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
+bool isNumeric(std::string str)
+{
+    for (char c : str) {
+        if (!std::isdigit(c)) 
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
     TodoList todoList = TodoList();
     int choice;
-    std::string eventName, eventDetails, eventDateFromUser, monthStr, dayStr, yearStr;
+    std::string eventName, eventDetails, eventDateFromUser, monthStr, dayStr, yearStr, eventPriorityStr;
     int eventDate, eventUniqueID, month, day, year, eventPriorityLevel, sortingCriteria;
     std::vector<std::map<std::string, std::string>> temp;
 
@@ -51,7 +62,20 @@ int main()
             std::getline(std::cin, eventDetails);
 
             std::cout << "Enter event Priority Level (1-5): ";
-            std::cin >> eventPriorityLevel;
+            std::getline(std::cin, eventPriorityStr);
+
+            if (!(isNumeric(eventPriorityStr))) 
+            {   
+                std::cout<<"===========INPUT MUST BE BETWEEN 1 AND 5============\n";
+                break; 
+            }
+            eventPriorityLevel= std::stoi(eventPriorityStr);
+            if(eventPriorityLevel < 1 || eventPriorityLevel > 5)
+            {
+                std::cout<<"===========INPUT MUST BE BETWEEN 1 AND 5============\n";
+                break; 
+            }
+
             clearInputBuffer();
             // Validate the priority level
             if (eventPriorityLevel < 1 || eventPriorityLevel > 5)
@@ -118,6 +142,11 @@ int main()
             break;
         case 4:
             std::cout << "======= REMOVE EVENT =======\n";
+            if(todoList.isEmpty())
+            {
+                std::cout << "============= TODO-LIST IS EMPTY =============\n";
+                break;                
+            }
             std::cout << "Enter unique ID of event to remove: ";
             std::cin >> eventUniqueID;
             clearInputBuffer();

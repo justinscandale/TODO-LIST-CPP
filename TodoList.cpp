@@ -79,12 +79,10 @@ void TodoList::toggleEventCompletion(int uniqueID)
     };
 
     // search for event
-    EVENT *prev = nullptr;
     EVENT *cur = root;
 
     while (cur != nullptr && cur->getUniqueID() != uniqueID)
     {
-        prev = cur;
         cur = cur->next;
     }
 
@@ -193,7 +191,7 @@ EVENT *TodoList::merge(EVENT *left, EVENT *right, std::string attribute)
         else
         {
             // Handle other attribute
-            if (left->getPriorityLevel() <= right->getPriorityLevel())
+            if (left->getPriorityLevel() > right->getPriorityLevel())
             {
                 tail->next = left;
                 left = left->next;

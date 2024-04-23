@@ -10,7 +10,17 @@ class TodoList
 
 public:
     TodoList(){}; // constructor
-
+    ~TodoList()
+{
+    EVENT *cur = root;
+    while (cur != nullptr)
+    {
+        EVENT *next = cur->next;
+        std::cout<<"DELETED EVENT WITH ID: " + std::to_string(cur->getUniqueID());
+        delete cur;
+        cur = next;
+    }
+};
     void mergeSort(std::string attribute);
     std::vector<std::map<std::string, std::string>> viewEvents();                        // put each event into map of <string, string> and insert this into a vector
     void addEvent(std::string name, std::string info = "", int priorityDate = 99999999, int priorityLevel = 0); // add event to priority queue

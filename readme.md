@@ -8,4 +8,4 @@
 
 <h3>COMPILE INSTRUCTIONS</h3>
 C++ Standard 17
-g++ -o test.out main.cpp -std=c++11 -std=c++17 -Wall
+g++ -o test.out main.cpp -std=c++17 -Wall
